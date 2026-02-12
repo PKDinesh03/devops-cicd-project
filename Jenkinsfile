@@ -2,17 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Code') {
-            steps {
-                echo 'Cloning repository...'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
-                dir('docker') {
-                    bat 'docker build -t my-web-app .'
-                }
+                bat 'docker build -t my-web-app -f docker/Dockerfile .'
             }
         }
 
